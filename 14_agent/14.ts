@@ -10,6 +10,7 @@ const model = new ChatOpenAI({
 const result = await model.invoke([
     new HumanMessage("2929590 * 129359")
 ]);
+console.log("result", result);
 const tools: ITools = {
     add: (a: number, b: number) => a + b,
     subtract: (a: number, b: number) => a - b,

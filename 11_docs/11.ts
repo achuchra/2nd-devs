@@ -32,4 +32,11 @@ descriptions.forEach((description, index) => {
     documents[index].metadata.source = description.content;
 });
 
-fs.writeFileSync("11_docs/docs.json", JSON.stringify(documents, null, 2));
+// fs.writeFileSync("11_docs/docs.json", JSON.stringify(documents, null, 2));
+fs.writeFile("11_docs/docs.json", JSON.stringify(documents, null, 2), (err) => {
+    if (err) {
+        console.error(err);
+        return;
+    }
+    console.log("File has been created");
+});

@@ -5,9 +5,9 @@ import {getVectorStore} from "./helpers.ts";
 const query = "Do you know the name of Adam's dog?";
 const vectorStore = await getVectorStore();
 const context = await vectorStore.similaritySearchWithScore(query, 1);
-
+console.log(context);
 const chat = new ChatOpenAI();
-const { content } = await chat.call([
+const { content } = await chat.invoke([
     new SystemMessage(`
         Answer questions as truthfully using the context below and nothing more. If you don't know the answer, say "don't know".
         context###${context?.[0]?.[0].pageContent}###

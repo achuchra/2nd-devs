@@ -7,6 +7,8 @@ const chat = new ChatOpenAI({
 });
 
 // Wywołanie chatu wraz z funkcją przyjmującą kolejne tokeny składające się na wypowiedź modelu
+let total: string = '';
+
 await chat.invoke([
     new HumanMessage(
         "Hey there!"
@@ -16,6 +18,8 @@ await chat.invoke([
         {
             handleLLMNewToken(token: string) {
                 console.log(token);
+                total += token;
+                console.log('Total:', total)
             },
         },
     ],
